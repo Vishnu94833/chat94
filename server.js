@@ -4,14 +4,15 @@ let bodyParser = require("body-parser");
 let server = require("http").createServer(app);
 let io = require("socket.io")(server);
 let users = require("./server/controller/usercontroller");
+const port = process.env.PORT || 4000;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 let router = require("./server/router/route");
 app.use("/", router);
 
-server.listen(4000);
-console.log("Listening to PORT 4000");
+server.listen(port);
+console.log(`Listening to PORT ${port}`);
 
 // app.use(express.static('./public'));
 
