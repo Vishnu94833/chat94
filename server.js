@@ -1,4 +1,5 @@
 let express = require("express");
+const cors = require('cors');
 let app = express();
 let bodyParser = require("body-parser");
 let server = require("http").createServer(app);
@@ -6,6 +7,7 @@ let io = require("socket.io")(server);
 let users = require("./server/controller/usercontroller");
 const port = process.env.PORT || 4000;
 
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 let router = require("./server/router/route");
