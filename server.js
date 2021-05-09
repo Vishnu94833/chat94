@@ -41,6 +41,6 @@ io.on("connection", function (client) {
       data.receivername,
       data.date
     );
-    io.emit("MESSAGE", data);
+    io.emit(data.senderid, data);
   });
 });
