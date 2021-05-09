@@ -24,13 +24,13 @@ io.on("connection", function (client) {
     console.log("socket disconnected");
   });
 
-  client.on("tobackend", function (data) {
-    console.log("...........................");
+  // client.on("tobackend", function (data) {
+  //   console.log("...........................");
 
-    users.addtodb(data.userid, data.message, data.date, data.username);
-    io.emit("tofrontend", data);
-  });
-  client.on("singleChatBackend", function (data) {
+  //   users.addtodb(data.userid, data.message, data.date, data.username);
+  //   io.emit("tofrontend", data);
+  // });
+  client.on("MESSAGE", function (data) {
     console.log(data.receiverid);
 
     users.singlechat(
@@ -41,6 +41,6 @@ io.on("connection", function (client) {
       data.receivername,
       data.date
     );
-    io.emit(data.receiverid, data);
+    io.emit("MESSAGE", data);
   });
 });
