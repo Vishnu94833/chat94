@@ -16,7 +16,7 @@ app.use("/", router);
 server.listen(port);
 console.log(`Listening to PORT ${port}`);
 
-app.use(express.static('./public'));
+// app.use(express.static('./public'));
 
 io.on("connection", function (client) {
   console.log("socket connected");
