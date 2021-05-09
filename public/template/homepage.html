@@ -1,0 +1,75 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>home page</title>
+
+</head>
+
+
+<body background="../asset/chatapp.jpeg">
+    <div>
+        <link rel="stylesheet">
+        <div class="container1">
+            <div class="header">
+                <center>
+                    <p style="font-size: 40px; font-style: normal; color: black;">ChatApp</p>
+                </center>
+                <div class="logo">
+                    <img style="border-radius: 10px" src="../asset/clogo.png" height="80px" width="80px">
+                </div>
+                <div class="header">
+                    <a href="#/login"><button type="logout" value="logout" style="padding:10px; width:80px;border-radius: 15px;float:right;">logout</button></a>
+                </div>
+            </div>
+            <div class="area">
+                <div class="leftarea">
+                    <div class="users" class="reflect">
+                        <center>
+                            <div>
+                                <p style="color: black">Contacts</p>
+                            </div>
+                        </center>
+                        <ol>
+                            <li ng-repeat="key in arr">
+                                <font color="black">{{key}}</font>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="rightarea">
+                    <div class="messagebox" class="reflect">
+                        <center style="color: black">Chatbox</center>
+                        <div>
+                            <div ng-repeat="key in msgArr track by $index">
+                                <p id="right" ng-if="currUser != key.username">{{key.username}} :
+                                    <span>{{key.message}}</span><br><br>
+                                    <span id="left-time">{{key.date | date: 'medium'}}</span></p>
+                                <p id="left" ng-if="currUser == key.username">{{key.username}} :
+                                    <span>{{key.message}}</span><br><br>
+                                    <span id="right-time">{{key.date | date: 'medium'}}</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="typing">
+                        <div class="typingmessage">
+                            <textarea rows="6" cols="85" placeholder="Type message" ng-model='message'>
+                 
+                </textarea>
+                        </div>
+                        <div class="send">
+                            <center><button type="hidden" value="send" onkeyup="notifyTyping();" ng-click="sendMessage()"
+                                    style="padding:10px; width:80px;border-radius: 15px">send</button>
+                            </center>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html> -->
