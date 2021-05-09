@@ -91,6 +91,7 @@ exports.addtodb = function (userid, message, date, username) {
         }
     });
     console.log(response)
+    return response;
 }
 
 
@@ -144,6 +145,7 @@ exports.singlechat = function (message,senderid,receiverid,sendername,receiverna
         }
     });
     console.log(response)
+    return response;
 }
 
 

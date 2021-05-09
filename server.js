@@ -24,12 +24,12 @@ io.on("connection", function (client) {
     console.log("socket disconnected");
   });
 
-  // client.on("tobackend", function (data) {
-  //   console.log("...........................");
+  client.on("CLIENT_MESSAGE", function (data) {
+    console.log("...........................");
 
-  //   users.addtodb(data.userid, data.message, data.date, data.username);
-  //   io.emit("tofrontend", data);
-  // });
+    users.addtodb(data.userid, data.message, data.date, data.username);
+    io.emit("CLIENT_MESSAGE", data);
+  });
   client.on("MESSAGE", function (data) {
     console.log(data.receiverid);
 
