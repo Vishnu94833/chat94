@@ -122,28 +122,42 @@ router.post(
   }
 );
 
-router.get('/listIpAddress',users.getIpAdd)
-router.post(
-  "/ipaddr",
-  (req, res) => {
-    let db = new ipaddr();
-    db.address = req.body.address;
-    db.ip = req.body.ip;
-    db.data = req.body.data;
+router.get("/listIpAddress", users.getIpAdd);
+router.post("/ipaddr", (req, res) => {
+  let db = new ipaddr();
+  db.address = req.body.address;
+  db.ip = req.body.ip;
+  db.data = req.body.data;
+  ipaddr.find({ ip: db.ip }, function (err, data) {
+    if (data.length > 0) {
+      response = {
+        error: false,
+        message: "ipAddress  already exists",
+      };
+      return res.status(404).send(response);
+    }
 
-        db.save(function (err) {
-          if (err) {
-            response = {
-              error: true,
-              message: "error storing data",
-            };
-          } else {
-            response = { error: false, message: "ip address added successful" };
-          }
-          return res.status(202).send(response);
-        });
-      }
-);
+    if (err) {
+      response = {
+        error: true,
+        message: "error retrieving data",
+      };
+      return res.status(404).send(response);
+    } else {
+      db.save(function (err) {
+        if (err) {
+          response = {
+            error: true,
+            message: "error storing data",
+          };
+        } else {
+          response = { error: false, message: "ip address added successful" };
+        }
+        return res.status(202).send(response);
+      });
+    }
+  });
+});
 
 app.use("/", router);
 
