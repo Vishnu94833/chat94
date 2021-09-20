@@ -11,6 +11,7 @@ let config = require("../config/auth.js");
 const { check, validationResult } = require("express-validator/check");
 
 let usermod = require("../model/users.js");
+const ipaddr = require("../model/ipaddr.js");
 let response = [];
 
 router.use("/auth", auth);
@@ -119,6 +120,29 @@ router.post(
       }
     });
   }
+);
+
+router.get('/listIpAddress',users.getIpAdd)
+router.post(
+  "/ipaddr",
+  (req, res) => {
+    let db = new ipaddr();
+    db.address = req.body.address;
+    db.ip = req.body.ip;
+    db.data = req.body.data;
+
+        db.save(function (err) {
+          if (err) {
+            response = {
+              error: true,
+              message: "error storing data",
+            };
+          } else {
+            response = { error: false, message: "ip address added successful" };
+          }
+          return res.status(202).send(response);
+        });
+      }
 );
 
 app.use("/", router);

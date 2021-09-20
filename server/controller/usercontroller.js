@@ -174,3 +174,27 @@ exports.getsinglechat = function (req, res) {
         }
     })
 }
+
+exports.getIpAdd = function (req, res) {
+    let ipModel = require('../model/ipaddr');
+    let response = {};
+    ipModel.find({}, function(err,data) {
+        if (data) {
+            response = {
+                "error": false,
+                "message": data
+
+            }
+            res.status(200).send(response);
+        }
+        else {
+            response = {
+                "error": true,
+                "message": "something went wrong",
+
+            }
+            console.log(err);
+            res.status(401).send(response);
+        }
+    })
+}

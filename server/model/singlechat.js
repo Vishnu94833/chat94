@@ -1,5 +1,5 @@
 let mongoose=require('mongoose');
-mongoose.connect('mongodb+srv://Vishnu94833:WGZ2VelktA5ql7wJ@cluster0.imkz5.mongodb.net/<dbname>?retryWrites=true&w=majority',{useNewUrlParser:true});
+mongoose.connect('mongodb+srv://vk38:1HK14EC038@cluster0.gzk7z.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',{useNewUrlParser:true,useUnifiedTopology: true});
 let mongoSchema=mongoose.Schema;
 let singleMessageSchema=new mongoSchema({
     'message' :{
